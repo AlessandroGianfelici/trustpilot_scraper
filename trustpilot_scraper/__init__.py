@@ -27,7 +27,6 @@ def trustPilotParser(input_url : str):
     This function take the url of the trustpilot page of the company you are interested in 
     and return as output a pandas dataframe containing the following columns:
 
-     - company_name
      - review_title
      - review_text
      - review_stars
@@ -52,8 +51,7 @@ def trustPilotParser(input_url : str):
             titolo.append(myDict['reviewHeader'])
             testo.append(myDict['reviewBody'])
             stelle.append(myDict['stars'])
-    data = {'company_name' : myDict['businessUnitDisplayName'],
-            'review_title' : titolo,
+    data = {'review_title' : titolo,
             'review_text' : testo,
             'review_stars' : stelle}
     return pd.DataFrame(data).drop_duplicates()
