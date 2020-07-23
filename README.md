@@ -4,11 +4,11 @@ A python module to get review and stars from trustpilot.com. It is an amatorial 
 
 To install:
 
-pip install git+https://github.com/AlessandroGianfelici/trutpilot_scraper.git
+pip install git+https://github.com/AlessandroGianfelici/trustpilot_scraper.git
 
 
 To use it:
 
-from trutpilot_scraper import trustPilotParser
+from trustpilot_scraper import trustPilotParser
 
 myRev = trustPilotParser(myUrl)
