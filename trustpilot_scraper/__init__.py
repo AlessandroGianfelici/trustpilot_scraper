@@ -22,7 +22,7 @@ def getNumPages(url):
     Nrec1pag = len(html_soup.find_all('div', class_ = 'review-card'))
     return NrevTot//Nrec1pag + 1
 
-def trustPilotParser(input_url : str, language='en'):
+def trustPilotParser(input_url : str):
     """
     This function take the url of the trustpilot page of the company you are interested in 
     and return as output a pandas dataframe containing the following columns:
@@ -33,8 +33,6 @@ def trustPilotParser(input_url : str, language='en'):
 
     :param input_url: The url of the trustpilot page of the company you are interested in.
     :type input_url: str
-    :param language: The language of the reviews (es. 'en' for english, 'it' for italian, etc.)
-    :type language: str
     :return: reviews
     :rtype: pd.DataFrame
     """   
@@ -44,7 +42,7 @@ def trustPilotParser(input_url : str, language='en'):
     nPages = getNumPages(input_url)
     for page in range(1,nPages):
         print(f"Processing page {page} of {nPages-1}...")
-        url = f'{input_url}?languages={language}&page={page}'
+        url = f'{input_url}?page={page}'
         response = get(url)
         html_soup = BeautifulSoup(response.text, 'html.parser')
         recensioni = html_soup.find_all('div', class_ = 'review-card')
