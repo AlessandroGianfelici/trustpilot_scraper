@@ -16,7 +16,7 @@ from langdetect import detect
 myDict = {}
 
 def getNumPages(url):
-    response = get(url)
+    response = get(url+'?page=1')
     html_soup = BeautifulSoup(response.text, 'html.parser') 
     tmp = html_soup.find_all('span', class_ = 'headline__review-count')
     NrevTot = int(tmp[0].text)
