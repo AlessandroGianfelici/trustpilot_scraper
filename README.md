@@ -9,6 +9,6 @@ pip install git+https://github.com/AlessandroGianfelici/trustpilot_scraper.git
 
 To use it:
 
-from trustpilot_scraper import trustPilotParser
+from trustpilot_scraper import scrapeTrustPilot
 
-myRev = trustPilotParser(myUrl)
+myRev = scrapeTrustPilot(myUrl)
