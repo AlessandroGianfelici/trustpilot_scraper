@@ -16,7 +16,7 @@ from langdetect import detect
 myDict = {}
 
 def getNumPages(url):
-    response = get(url+'?page=1')
+    response = get(url+'?languages=all&page=1')
     html_soup = BeautifulSoup(response.text, 'html.parser') 
     tmp = html_soup.find_all('span', class_ = 'headline__review-count')
     NrevTot = int(tmp[0].text)
@@ -27,11 +27,9 @@ def scrapeTrustPilot(input_url : str):
     """
     This function take the url of the trustpilot page of the company you are interested in 
     and return as output a pandas dataframe containing the following columns:
-
      - review_title
      - review_text
      - review_stars
-
     :param input_url: The url of the trustpilot page of the company you are interested in.
     :type input_url: str
     :return: reviews
@@ -44,7 +42,7 @@ def scrapeTrustPilot(input_url : str):
     nPages = getNumPages(input_url)
     for page in range(1,nPages):
         print(f"Processing page {page} of {nPages-1}...")
-        url = f'{input_url}?page={page}'
+        url = f'{input_url}?languages=all&page={page}'
         response = get(url)
         html_soup = BeautifulSoup(response.text, 'html.parser')
         recensioni = html_soup.find_all('div', class_ = 'review-card')
