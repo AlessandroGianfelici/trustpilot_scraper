@@ -23,7 +23,7 @@ def getNumPages(url):
     Nrec1pag = len(html_soup.find_all('div', class_ = 'review-card'))
     return NrevTot//Nrec1pag + 1
 
-def trustPilotParser(input_url : str):
+def scrapeTrustPilot(input_url : str):
     """
     This function take the url of the trustpilot page of the company you are interested in 
     and return as output a pandas dataframe containing the following columns:
