@@ -10,6 +10,6 @@ setup(name='trustpilot_scraper',
       packages=find_packages(),
       include_package_data=True,
       install_requires=[
-          'pandas', 'bs4'
+          'pandas', 'bs4', 'langdetect'
       ],
       zip_safe=False)

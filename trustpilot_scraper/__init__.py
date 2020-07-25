@@ -11,6 +11,7 @@ import bs4
 from requests import get
 from bs4 import BeautifulSoup
 import pandas as pd
+from langdetect import detect
 
 myDict = {}
 
@@ -39,6 +40,7 @@ def trustPilotParser(input_url : str):
     titolo = []
     testo = []
     stelle = []
+    lingua = []
     nPages = getNumPages(input_url)
     for page in range(1,nPages):
         print(f"Processing page {page} of {nPages-1}...")
@@ -51,7 +53,10 @@ def trustPilotParser(input_url : str):
             titolo.append(myDict['reviewHeader'])
             testo.append(myDict['reviewBody'])
             stelle.append(myDict['stars'])
-    data = {'review_title' : titolo,
+            lingua.append(detect(myDict['reviewBody']))
+    data = {'company_name' : myDict['businessUnitDisplayName'],
+            'review_title' : titolo,
             'review_text' : testo,
-            'review_stars' : stelle}
+            'review_stars' : stelle,
+            'language' : lingua}
     return pd.DataFrame(data).drop_duplicates()
