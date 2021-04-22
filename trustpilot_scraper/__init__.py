@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from langdetect import detect
 
-myDict = {}
+myLongNamedDictionary = {}
 
 def getNumPages(url):
     response = get(url+'?languages=all&page=1')
@@ -47,12 +47,12 @@ def scrapeTrustPilot(input_url : str):
         html_soup = BeautifulSoup(response.text, 'html.parser')
         recensioni = html_soup.find_all('div', class_ = 'review-card')
         for recensione in recensioni:
-            exec(f"global myDict; myDict = {recensione.script.contents[0][1:-1]}")
-            titolo.append(myDict['reviewHeader'])
-            testo.append(myDict['reviewBody'])
-            stelle.append(myDict['stars'])
-            lingua.append(detect(myDict['reviewBody']))
-    data = {'company_name' : myDict['businessUnitDisplayName'],
+            exec(f"global myLongNamedDictionary; global null = None; myLongNamedDictionary = {recensione.script.contents[0][1:-1]}")
+            titolo.append(myLongNamedDictionary['reviewHeader'])
+            testo.append(myLongNamedDictionary['reviewBody'])
+            stelle.append(myLongNamedDictionary['stars'])
+            lingua.append(detect(myLongNamedDictionary['reviewBody']))
+    data = {'company_name' : myLongNamedDictionary['businessUnitDisplayName'],
             'review_title' : titolo,
             'review_text' : testo,
             'review_stars' : stelle,
