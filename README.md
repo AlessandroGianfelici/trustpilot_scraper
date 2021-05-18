@@ -11,4 +11,4 @@ To use it:
 
 from trustpilot_scraper import scrapeTrustPilot
 
-myRev = scrapeTrustPilot(myUrl)
+myRev = scrapeTrustPilot(html_text)
