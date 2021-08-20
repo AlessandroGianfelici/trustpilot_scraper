@@ -5,7 +5,7 @@ Created on Thu Aug 30 15:04:00 2018
 @author: Alessandro Gianfelici
 """
 
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 
 from bs4 import BeautifulSoup
 import pandas as pd
