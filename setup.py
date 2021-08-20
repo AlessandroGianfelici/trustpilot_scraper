@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='trustpilot_scraper',
-      version='0.2.0',
+      version='0.2.1',
       description='Scraping Utility for trustpilot.com',
       url='https://github.com/AlessandroGianfelici/trutpilot_scraper',
       author='Alessandro Gianfelici',
