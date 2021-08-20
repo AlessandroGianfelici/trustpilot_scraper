@@ -33,6 +33,7 @@ def scrapeTrustPilot(body : str):
     html_soup = BeautifulSoup(body, 'html.parser')
     recensioni = html_soup.find_all('div', class_ = 'review-card')
     for recensione in recensioni:
+        false = 'False'
         exec(f"global myLongNamedDictionary; global null; myLongNamedDictionary = {recensione.script.contents[0][1:-1]}")
         titolo.append(myLongNamedDictionary['reviewHeader'])
         testo.append(myLongNamedDictionary['reviewBody'])
